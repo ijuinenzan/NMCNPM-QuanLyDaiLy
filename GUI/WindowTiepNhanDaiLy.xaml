@@ -1,0 +1,100 @@
+﻿<controls:MetroWindow x:Class="GUI.WindowTiepNhanDaiLy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:GUI"
+        xmlns:dto="clr-namespace:DTO;assembly=DTO" 
+        xmlns:gui="clr-namespace:GUI.GUI"
+        mc:Ignorable="d"
+        Title="Tiếp nhận đại lý" Height="500"  FontWeight="Medium" Width="700" Background="#EBDFCF" Loaded="MetroWindow_Loaded">
+    <controls:MetroWindow.Resources>
+        <gui:MaLoaiDaiLyToTenLoaiDaiLy x:Key="MaLoaiDaiLyToTenLoaiDaiLy" />
+        <gui:MaQuanToTenQuan x:Key="MaQuanToTenQuan" />
+    </controls:MetroWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Content="Mã đại lý" Margin="10, 10, 10, 10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
+        <Label Content="Tên đại lý" Margin="10, 10, 10, 10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
+        <Label Content="Loại đại lý" Margin="10, 10, 10, 10" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
+        <Label Content="Số điện thoại" Margin="10, 10, 10, 10" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
+        <Label Content="Địa chỉ" Margin="10, 10, 10, 10" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
+        <Label Content="Quận" Margin="10, 10, 10, 10" Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
+        <Label Content="Ngày tiếp nhận" Margin="10, 10, 10, 10" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
+        <Label Content="Email" Margin="10, 10, 10, 10" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
+
+        <TextBox Background="White" Name="MaDaiLy" Margin="10, 10, 10, 10" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Left" IsEnabled="False" ></TextBox>
+        <TextBox Background="White" controls:TextBoxHelper.ClearTextButton="True" Name="TenDaiLy" Margin="10, 10, 10, 10" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Left"></TextBox>
+        <controls:SplitButton Background="White" Name="LoaiDaiLy" Margin="10, 10, 10, 10" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+            <controls:SplitButton.ItemTemplate>
+                <DataTemplate DataType="dto:LoaiDaiLyDTO">
+                    <TextBlock Text="{Binding TenLoaiDaiLy}"/>
+                </DataTemplate>
+            </controls:SplitButton.ItemTemplate>
+        </controls:SplitButton>
+        <TextBox Background="White" controls:TextBoxHelper.ClearTextButton="True" Name="SoDienThoai" Margin="10, 10, 10, 10" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Left" TextChanged="SoDienThoai_TextChanged"/>
+        <TextBox Background="White" controls:TextBoxHelper.ClearTextButton="True" Name="DiaChi" Margin="10, 10, 10, 10" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Left"/>
+        <controls:SplitButton Background="White" Name="Quan" Margin="10, 10, 10, 10" Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+            <controls:SplitButton.ItemTemplate>
+                <DataTemplate DataType="dto:QuanDTO">
+                    <TextBlock Text="{Binding TenQuan}"/>
+                </DataTemplate>
+            </controls:SplitButton.ItemTemplate>
+        </controls:SplitButton>
+        <DatePicker Background="White" Name="NgayTiepNhan" Margin="10, 10, 10, 10" Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DisplayDate="{x:Static sys:DateTime.Now}" SelectedDate="{x:Static sys:DateTime.Now}" ></DatePicker>
+        <TextBox Background="White" controls:TextBoxHelper.ClearTextButton="True" Name="Email" Margin="10, 10, 10, 10" Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Left"/>
+
+        <DataGrid Name="DataGridDaiLy" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="12" Grid.RowSpan="4" AutoGenerateColumns="False" SelectionChanged="DataGridDaiLy_SelectionChanged" SelectionMode="Single" CanUserAddRows="False" CurrentCellChanged="DataGridDaiLy_CurrentCellChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã đại lý" Binding="{Binding MaDaiLy}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tên đại lý" Binding="{Binding TenDaiLy}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Loại đại lý" Binding="{Binding MaLoaiDaiLy, Converter={StaticResource MaLoaiDaiLyToTenLoaiDaiLy}}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Số điện thoại" Binding="{Binding SoDienThoai}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Địa chỉ" Binding ="{Binding DiaChi}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Quận" Binding="{Binding MaQuan, Converter={StaticResource MaQuanToTenQuan}}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ngày tiếp nhận" Binding="{Binding NgayTiepNhan, StringFormat=d}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nợ" Binding="{Binding NoCuaDaiLy}" IsReadOnly ="True"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Foreground="White" Background="#D54D1D" BorderBrush="white" BorderThickness="2" Name="TiepNhan" Margin="10, 10, 10, 10" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Content="Tiếp nhận" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="TiepNhan_Click"></Button>
+        <Button Foreground="White" Background="#D54D1D" BorderBrush="white" BorderThickness="2"  Name="DaiLyMoi" Margin="10, 10, 10, 10" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2" Content="Đại lý mới" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="DaiLyMoi_Click"></Button>
+        <Button Foreground="White" Background="#D54D1D" BorderBrush="white" BorderThickness="2"  Name="CapNhat" Margin="10, 10, 10, 10" Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="2" Content="Cập nhật" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="CapNhat_Click"></Button>
+        <Button Foreground="White" Background="#D54D1D" BorderBrush="white" BorderThickness="2"  Name="XoaDaiLy" Margin="10, 10, 10, 10" Grid.Row="8" Grid.Column="8" Grid.ColumnSpan="2" Content="Xoá đại lý" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="XoaDaiLy_Click"></Button>
+        <Button Foreground="White" Background="#D54D1D" BorderBrush="white" BorderThickness="2"  Name="Thoat" Margin="10, 10, 10, 10" Grid.Row="8" Grid.Column="10" Grid.ColumnSpan="2" Content="Thoát" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="Thoat_Click"></Button>
+    </Grid>
+</controls:MetroWindow>
+
+
+
+
+
+
+
