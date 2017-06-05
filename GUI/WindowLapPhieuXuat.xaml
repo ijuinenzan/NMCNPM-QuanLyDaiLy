@@ -1,0 +1,134 @@
+﻿<controls:MetroWindow x:Class="GUI.WindowLapPhieuXuat"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:local="clr-namespace:GUI"
+                      xmlns:dto="clr-namespace:DTO;assembly=DTO"
+                      mc:Ignorable="d"
+                      Title="Lập phiếu xuất" Height="500" FontFamily="Tahoma" FontWeight="Medium" Width="700" Background="#EBDFCF" Loaded="MetroWindow_Loaded">
+    <controls:MetroWindow.Resources>
+        <local:MaMatHangToTenMatHang x:Key="MaMatHangToTenMatHang" />
+        <local:MaDonViTinhToTenDonViTinh x:Key="MaDonViTinhToTenDonViTinh" />
+    </controls:MetroWindow.Resources>
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <controls:Flyout Header="Thêm hàng" Background="#5CA1B1" Width="350" Position="Right" AnimateOpacity="True" x:Name="ChiTietPhieuXuat">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="2.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="2.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Label Margin="10, 10, 10, 10" Grid.Row="0" Grid.Column="0" Content="Mặt hàng"  VerticalAlignment="Center" HorizontalAlignment="Left"></Label>
+                    <Label Margin="10, 10, 10, 10" Grid.Row="1" Grid.Column="0" Content="Đơn vị tính"  VerticalAlignment="Center" HorizontalAlignment="Left"></Label>
+                    <Label Margin="10, 10, 10, 10" Grid.Row="2" Grid.Column="0" Content="Đơn giá xuất"  VerticalAlignment="Center" HorizontalAlignment="Left"></Label>
+                    <Label Margin="10, 10, 10, 10" Grid.Row="3" Grid.Column="0" Content="Số lượng xuất"  VerticalAlignment="Center" HorizontalAlignment="Left"></Label>
+                    <Label Grid.Row="3" Grid.Column="2" Content="/"  VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+
+                    <controls:SplitButton Name="MatHang" Margin="10, 10, 10, 10" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" SelectionChanged="MatHang_SelectionChanged">
+                        <controls:SplitButton.ItemTemplate>
+                            <DataTemplate DataType="dto:MatHangDTO">
+                                <TextBlock Text="{Binding TenMatHang}"/>
+                            </DataTemplate>
+                        </controls:SplitButton.ItemTemplate>
+                    </controls:SplitButton>
+                    <controls:SplitButton Name="DonViTinh" Margin="10, 10, 10, 10" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                        <controls:SplitButton.ItemTemplate>
+                            <DataTemplate DataType="dto:DonViTinhDTO">
+                                <TextBlock Text="{Binding TenDonViTinh}"/>
+                            </DataTemplate>
+                        </controls:SplitButton.ItemTemplate>
+                    </controls:SplitButton>
+                    <TextBox VerticalContentAlignment="Center" controls:TextBoxHelper.ClearTextButton="True" Name="DonGiaXuat" Margin="10, 10, 10, 10" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Left" TextChanged="DonGiaXuat_TextChanged"/>
+                    <TextBox VerticalContentAlignment="Center" controls:TextBoxHelper.ClearTextButton="True" Name="SoLuongXuat" Margin="10, 10, 10, 10" Grid.Row="3" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Left" TextChanged="SoLuongXuat_TextChanged"/>
+                    <TextBox VerticalContentAlignment="Center" Text="0" IsReadOnly="True" Name="SoLuongTon" Margin="10, 10, 10, 10" Grid.Row="3" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Left"/>
+                    <Button Foreground="White" Background="#D54D1D" BorderBrush="white" BorderThickness="2" Margin="10, 10, 10, 10" Name="Them" Content="Thêm" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Them_Click"></Button>
+                </Grid>
+            </controls:Flyout>
+
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
+    <Grid x:Name="Grid1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Content="Mã đại lý" Margin="10, 10, 10, 10" Grid.Row="0" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
+            <Label Content="Ngày lập phiếu" Margin="10, 10, 10, 10" Grid.Row="0" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
+            <Label Content="Nợ hiện tại" Margin="10, 10, 10, 10" Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
+
+            <controls:SplitButton Name="MaDaiLy" Margin="10, 10, 10, 10"  Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="MaDaiLy_SelectionChanged">
+                <controls:SplitButton.ItemTemplate>
+                    <DataTemplate DataType="dto:DaiLyDTO">
+                        <TextBlock Text="{Binding MaDaiLy}"/>
+                    </DataTemplate>
+                </controls:SplitButton.ItemTemplate>
+            </controls:SplitButton>
+            <DatePicker Name="NgayLapPhieu" Margin="10, 10, 10, 10" Grid.Row="0" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DisplayDate="{x:Static sys:DateTime.Now}" SelectedDate="{x:Static sys:DateTime.Now}"></DatePicker>
+
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox VerticalContentAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" IsReadOnly="True" Text="0" Name="NoHienTai"  Margin="10, 10, 10, 10"></TextBox>
+                <TextBlock x:Name="NoToiDa" VerticalAlignment="Center" HorizontalAlignment="Center" Text="0" Grid.Column="1" FontWeight="Heavy"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="DataGridChiTietPhieuXuat" AutoGenerateColumns="False"
+                      CanUserAddRows="False" AreRowDetailsFrozen="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mặt Hàng" IsReadOnly="True" Binding="{Binding MaMatHang, Converter={StaticResource MaMatHangToTenMatHang}}"/>
+                    <DataGridTextColumn Header="Đơn Vị Tính" IsReadOnly="True" Binding="{Binding MaDonViTinh, Converter={StaticResource MaDonViTinhToTenDonViTinh}}" />
+                    <DataGridTextColumn Header="Đơn Giá Xuất" IsReadOnly="True" Binding="{Binding DonGiaXuat}" />
+                    <DataGridTextColumn Header="Số Lượng Xuất" IsReadOnly="True" Binding="{Binding SoLuongXuat}"/>
+                    <DataGridTextColumn Header="Thành Tiền" IsReadOnly="True" Binding="{Binding ThanhTien}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock x:Name="TongTriGia" Grid.Row="1" Text="Tổng Trị Giá: 0" FontSize="30" Background="Beige"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+            <Button Foreground="White" Background="#D54D1D" BorderBrush="white" BorderThickness="2" x:Name="ThemChiTiet" Margin="10, 10, 10, 10" Content="Thêm hàng" Click="ThemChiTiet_Click" Grid.Column="0"/>
+            <Button Foreground="White" Background="#D54D1D" BorderBrush="white" BorderThickness="2" x:Name="Xoa" Margin="10, 10, 10, 10" Content="Xoá hàng" Click="Xoa_Click" Grid.Column="1"/>
+            <Button Foreground="White" Background="#D54D1D" BorderBrush="white" BorderThickness="2" Grid.Column="2" x:Name="LapPhieuXuat" Content="Lập phiếu xuất" Margin="10,10,10,10" Click="TaoPhieuXuat_Click"/>
+        </Grid>
+    </Grid>
+</controls:MetroWindow>

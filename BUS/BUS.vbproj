@@ -63,8 +63,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCaoCongNoBUS.vb" />
+    <Compile Include="BaoCaoDoanhSoBUS.vb" />
     <Compile Include="DaiLyBUS.vb" />
+    <Compile Include="DonViTinhBUS.vb" />
     <Compile Include="LoaiDaiLyBUS.vb" />
+    <Compile Include="MatHangBUS.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -80,6 +84,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ParameterBUS.vb" />
+    <Compile Include="PhieuThuTienBUS.vb" />
+    <Compile Include="PhieuXuatBUS.vb" />
     <Compile Include="QuanBUS.vb" />
   </ItemGroup>
   <ItemGroup>

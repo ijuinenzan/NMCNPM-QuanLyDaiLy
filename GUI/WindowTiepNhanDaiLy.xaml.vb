@@ -1,12 +1,5 @@
-﻿
-Imports System.Linq
-Imports System.Windows
-Imports System.Windows.Controls
-
-Imports DTO
+﻿Imports DTO
 Imports BUS
-Imports BUS.BUS
-Imports DTO.DTO
 
 Imports MahApps.Metro.Controls.Dialogs
 
@@ -21,7 +14,7 @@ Namespace GUI
 
         Private Async Sub TiepNhan_Click(sender As Object, e As RoutedEventArgs)
             If MaDaiLy.Text.Trim() = "" OrElse TenDaiLy.Text.Trim() = "" OrElse LoaiDaiLy.SelectedItem Is Nothing OrElse SoDienThoai.Text.Trim() = "" OrElse DiaChi.Text.Trim() = "" OrElse Quan.SelectedItem Is Nothing OrElse Email.Text.Trim() = "" Then
-                Await Me.ShowMessageAsync("Lỗi", "Các field còn trống")
+                Await ShowMessageAsync("Lỗi", "Các field còn trống")
 
                 Return
             End If
@@ -29,9 +22,9 @@ Namespace GUI
             Try
                 DaiLyBUS.InsertDaiLy(GetDaiLyFromInput())
                 RefreshWindow()
-                Await Me.ShowMessageAsync("Thành công", "Tiếp nhận đại lý thành công")
+                Await ShowMessageAsync("Thành công", "Tiếp nhận đại lý thành công")
             Catch ex As Exception
-                'Await Me.ShowMessageAsync("Lỗi", ex.Message)
+                ShowMessageAsync("Lỗi", ex.Message)
             End Try
         End Sub
 
@@ -41,7 +34,7 @@ Namespace GUI
 
         Private Async Sub CapNhat_Click(sender As Object, e As RoutedEventArgs)
             If MaDaiLy.Text.Trim() = "" OrElse TenDaiLy.Text.Trim() = "" OrElse LoaiDaiLy.SelectedItem Is Nothing OrElse SoDienThoai.Text.Trim() = "" OrElse DiaChi.Text.Trim() = "" OrElse Quan.SelectedItem Is Nothing OrElse Email.Text.Trim() = "" Then
-                Await Me.ShowMessageAsync("Lỗi", "Các field còn trống")
+                Await ShowMessageAsync("Lỗi", "Các field còn trống")
 
                 Return
             End If
@@ -49,9 +42,9 @@ Namespace GUI
             Try
                 DaiLyBUS.UpdateDaiLy(GetDaiLyFromInput())
                 RefreshWindow()
-                Await Me.ShowMessageAsync("Thành công", "Cập nhật đại lý thành công")
+                Await ShowMessageAsync("Thành công", "Cập nhật đại lý thành công")
             Catch ex As Exception
-                'Await Me.ShowMessageAsync("Lỗi", ex.Message)
+                ShowMessageAsync("Lỗi", ex.Message)
             End Try
         End Sub
 
@@ -61,14 +54,14 @@ Namespace GUI
             Try
                 DaiLyBUS.DeleteDaiLyByMaDaiLy(daiLy.MaDaiLy)
                 RefreshWindow()
-                Await Me.ShowMessageAsync("Thành công", "Xoá đại lý thành công")
+                Await ShowMessageAsync("Thành công", "Xoá đại lý thành công")
             Catch ex As Exception
-                'Await Me.ShowMessageAsync("Lỗi", ex.Message)
+                ShowMessageAsync("Lỗi", ex.Message)
             End Try
         End Sub
 
         Private Async Sub Thoat_Click(sender As Object, e As RoutedEventArgs)
-            Dim result = Await Me.ShowMessageAsync("Thoát", "Bạn có đồng ý thoát?", MessageDialogStyle.AffirmativeAndNegative)
+            Dim result = Await ShowMessageAsync("Thoát", "Bạn có đồng ý thoát?", MessageDialogStyle.AffirmativeAndNegative)
 
             If result = MessageDialogResult.Affirmative Then
                 Close()

@@ -1,12 +1,13 @@
-﻿Imports System.Globalization
+﻿Imports System
+Imports System.Globalization
+Imports System.Windows.Data
 Imports BUS
 
-
-Public Class MaLoaiDaiLyToTenLoaiDaiLy
+Public Class MaDaiLyToTenDaiLy
     Implements IValueConverter
 
     Public Function Convert(value As Object, targetType As Type, parameter As Object, culture As CultureInfo) As Object Implements IValueConverter.Convert
-        Return LoaiDaiLyBUS.SelectLoaiDaiLyByMaLoaiDaiLy(value.ToString()).TenLoaiDaiLy
+        Return DaiLyBUS.SelectDaiLyByMaDaiLy(value.ToString()).TenDaiLy
     End Function
 
     Public Function ConvertBack(value As Object, targetType As Type, parameter As Object, culture As CultureInfo) As Object Implements IValueConverter.ConvertBack

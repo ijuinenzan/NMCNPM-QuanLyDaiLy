@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A5347272-B13B-45DB-9D05-5F8A1F50CC5E}</ProjectGuid>
+    <ProjectGuid>{580068E5-191B-4240-9C01-6ECF787D6EC0}</ProjectGuid>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
     <OutputType>WinExe</OutputType>
     <RootNamespace>GUI</RootNamespace>
@@ -91,8 +91,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MaLoaiDaiLyToTenLoaiDaiLy.vb" />
-    <Compile Include="MaQuanToTenQuan.vb" />
+    <Compile Include="WindowLapPhieuXuat.xaml.vb">
+      <DependentUpon>WindowLapPhieuXuat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowTiepNhanDaiLy.xaml.vb">
       <DependentUpon>WindowTiepNhanDaiLy.xaml</DependentUpon>
     </Compile>
@@ -100,6 +101,12 @@
       <DependentUpon>Application.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MaDaiLyToTenDaiLy.vb" />
+    <Compile Include="MaDonViTinhToTenDonViTinh.vb" />
+    <Page Include="WindowLapPhieuXuat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowTiepNhanDaiLy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +132,9 @@
     <Import Include="System.Windows.Navigation" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MaLoaiDaiLyToTenLoaiDaiLy.vb" />
+    <Compile Include="MaMatHangToTenMatHang.vb" />
+    <Compile Include="MaQuanToTenQuan.vb" />
     <Compile Include="My Project\AssemblyInfo.vb">
       <SubType>Code</SubType>
     </Compile>

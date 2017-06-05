@@ -81,9 +81,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCaoCongNoDAO.vb" />
+    <Compile Include="BaoCaoDoanhSoDAO.vb" />
+    <Compile Include="ChiTietBaoCaoCongNoDAO.vb" />
+    <Compile Include="ChiTietBaoCaoDoanhSoDAO.vb" />
+    <Compile Include="ChiTietPhieuXuatDAO.vb" />
     <Compile Include="DaiLyDAO.vb" />
     <Compile Include="DataAcessHelper.vb" />
+    <Compile Include="DonViTinhDAO.vb" />
     <Compile Include="LoaiDaiLyDAO.vb" />
+    <Compile Include="MatHangDAO.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -100,6 +107,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ParameterDAO.vb" />
+    <Compile Include="PhieuThuTienDAO.vb" />
+    <Compile Include="PhieuXuatDAO.vb" />
     <Compile Include="QuanDAO.vb" />
   </ItemGroup>
   <ItemGroup>

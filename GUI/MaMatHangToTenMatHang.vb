@@ -2,11 +2,11 @@
 Imports BUS
 
 
-Public Class MaLoaiDaiLyToTenLoaiDaiLy
+Public Class MaMatHangToTenMatHang
     Implements IValueConverter
 
     Public Function Convert(value As Object, targetType As Type, parameter As Object, culture As CultureInfo) As Object Implements IValueConverter.Convert
-        Return LoaiDaiLyBUS.SelectLoaiDaiLyByMaLoaiDaiLy(value.ToString()).TenLoaiDaiLy
+        Return MatHangBUS.SelectMatHangByMaMatHang(value.ToString()).TenMatHang
     End Function
 
     Public Function ConvertBack(value As Object, targetType As Type, parameter As Object, culture As CultureInfo) As Object Implements IValueConverter.ConvertBack
